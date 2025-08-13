@@ -25,9 +25,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip numpy
 
-    - name: Prepare input file
+    - name: Save input
       run: |
-        echo '{"x": ['$(echo "${{ github.event.inputs.x_values }}" | tr ',' ' ')']}' > input.json
+        echo '{"x_values": "${{ github.event.inputs.x_values }}"}' > input.json
+
 
     - name: Run model
       run: python model.py
