@@ -7,6 +7,10 @@ intercept = 1.0
 
 with open("input.json", "r") as f:
     data = json.load(f)
+    if isinstance(data["x_values"], str):
+        x_values = [float(x) for x in data["x_values"].split(",")]
+    else:
+        x_values = data["x_values"]
 
 x = np.array(data["x"]) 
 y_pred = coef * x + intercept
